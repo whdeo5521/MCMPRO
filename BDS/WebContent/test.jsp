@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>GitHub Test입니다</h3>
+	<h3>GitHub TEST 끝</h3>
+	<h3>GitHub 수정 해본다!</h3>
 </body>
 </html>
