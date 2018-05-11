@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>KaKao Web Login</title>
+<style type="text/css">
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+	body, ul, h1 {		/* 맨 처음 HTML을 만들때 기본적으로 해야 할 것 */
+		margin: 0;
+		padding: 0;
+		/* background-color: #F8F8FF; */
+	}
+	ul{					/* ul 태그에 기본적으로 해야 할 것 */
+		list-style-type: none;
+	}
+	a:link, a:visited{ /* 앵커 태그에 기본적으로 해야할것 */
+		text-decoration: none;
+		color: inherit;
+		display: inline-block;
+	}
+	/* ==========================================================웹 만들떄 기본적으로 해야 할 것=============================================================== */
+	
+	#wrap {
+		border: 3px solid gray;
+		width: 322px;
+		height: 350px;
+		margin: 50px auto 0;
+	}
+	#kakao_header{
+		height: 39px;
+		padding-top: 16px;
+		overflow: hidden;
+	}
+	h1 {
+		float: left;
+		margin-left: 25px;
+	}
+	#kakao_logo{
+		float: left;
+		height: 22px;
+		margin-top: 2px;
+		font-size: 18px;
+		font-weight: normal;
+		position: relative;
+		
+	}
+	#kakao_logo > img {
+		width: 80px;
+		height: 56px;
+		float: left;
+		margin-right: 10px;
+		top: -17px;
+		position: absolute;
+		left: 95px;
+	}
+	#kakao_logo > span{
+		line-height: 20px;
+	}
+	.list_help {
+		float: left;
+	}
+	.list_help > li{
+		float: left;
+		margin-right: 14px;
+	}
+	.list_help > li > a{
+		color: #333;
+		letter-spacing: -1px; /*  글자 간격 */
+		font-size: 13px;
+	}
+	#kakao_content{
+		margin: 10px auto;
+		height: 400px;
+		text-align: center;
+	}
+	#login_content {
+		width: 270px;
+		height: 284px;
+		padding: 0 25px;
+		border: 1px solid #ddd;
+		text-align: left;
+		display: inline-block;
+	}
+	#login_area{
+		width: 270px;
+		height: 372px;
+		position: relative;
+	}
+	#subtitle {
+		position: relative;
+		height: 18px;
+		margin: 22px auto 12px 0px;
+	}
+	#subtitle > img{
+		width: 80px;
+		height: 25px;
+		display: inline-block;
+		line-height: 20px;
+		position: absolute;
+		top: -8px;
+	}
+	.idpw{
+		color: #333; /* 글자색깔 */
+		letter-spacing: -1px; /* 글자 간격 */
+		background-color: white; /* 배경색 */
+		width: 240px; /* 가로길이 */
+		height: 30px; /* 세로길이 */
+		border: 1px solid #e5e5e5; /* 외곽 선 */
+		border-radius: 5px;	/* 선 둥글기 */
+		font-weight: normal; /* 글자 굵기 */
+		font-size: 15px; /* 글자 사이즈 */
+		line-height: 22px; /* 글자 상하 위치 */
+		padding: 8px 12px; /* 안쪽 여백 */
+		margin-bottom: 8px; /* 바텀 바깥여백 */
+		outline: none; /*  */
+		font-family: 'Jeju Gothic';
+	}
+	#login_form {
+		padding-top: 20px;
+		position: relative;
+	}
+	#login_form > img{
+		display: inline-block;
+		width: 24px;
+		height: 24px;
+		position: absolute;
+		top: 8px;
+		right: 8px;
+	}
+	#remember {
+		margin: -1px 0 16px; /* 3개만 쓸때는 상 좌우 하 순으로 들어간다 */
+	}
+	#remember > input {
+		color: #333;
+		margin: 3px 3px 3px 4px;
+		vertical-align: middle;
+	}
+	#remember > label {
+		font-size: 13px;
+		letter-spacing: -1px;
+		font-family: 'Jeju Gothic';
+	}
+	#btn_login{
+		display: inline-block;		/* 전체를 블록화 */
+		background-color: black;	/* 배경색 */
+		border: 1px solid white;	/* 테두리 선 */
+		width: 268px;				/* 좌우 길이 */
+		padding-top: 5px;			/* 위쪽여백 */
+		line-height: 45px;			/* 글자 상하위치 */
+		text-align: center;			/* 글자 정렬 */
+		border-radius: 5px; 		/* 테두리 둥글기 */
+		color: white;
+		font-weight: bold;
+		font-family: 'Jeju Gothic';
+		height: 46px;
+		font-size: 24px;
+		margin-top: 15px;
+		font-style: italic;
+	}
+	#btn_login:hover{
+		background-color: gray;
+		color: white;
+		font-family: 'Jeju Gothic';	
+		font-style: none;		
+		
+	}
+	#login_help {
+		width: 270px;
+		position: absolute;
+		padding-top: 10px;
+		font-size: 12px;
+		letter-spacing: -1px;
+		font-family: 'Jeju Gothic';
+	}
+	login_help a{
+		letter-spacing: -1px;
+		color: #333;
+	}
+	#login_help a:hover{
+		text-decoration: underline;
+	}
+	.right{
+		display: inline-block;
+		position: absolute;
+		right: 0;
+		top: 5px;
+	}
+	.right > a{
+		color: #777!important;
+	}
+	.right_bar {
+		display: inline-block;
+		width: 1px;
+		height: 11px;
+		background-color: #ccc;
+		font-size: 11px;
+		margin: 4px 1px 0 3px;
+	}
+	#member {
+		float: right;
+		font-size: 18px;
+	} 
+	.link_info:hover{
+		text-decoration: underline;
+	}
+	#footer_link .txt_bar {
+		display: inline-block;
+		width: 1px;
+		height: 8px;
+		margin: 4px 2px 0 3px;
+		font-size: 16px;
+		background-color: #CCC;
+	}
+	.util_cont {
+		position: relative;
+		display: inline-block;
+		font-size: 12px;
+		text-align: center;
+		letter-spacing: -1px;
+		font-family: 'Jeju Gothic';
+	}
+	.btn_info {
+		display: inline-block;
+		padding: 0;
+		margin-top: -2px;
+		font-size: 12px;
+		line-height: 18px;
+		color: #898989;
+		vertical-align: top;
+		border: 0 none;
+		background-color: transparent;
+		cursor: pointer;	
+		font-family: 'Jeju Gothic';
+	}
+	#btn_semo {
+		display: inline-block;
+		font-size: 1px;
+		position: absolute;
+		top: 0px;
+		right: -10px;
+	}
+	.txt_copyright {
+		font-size: 12px;
+		color: #919191;
+	}
+	.link_kakao:hover {
+		text-decoration: underline;
+	}
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="kakao_header">
+			<h1>
+			<a id="kakao_logo" href="#">
+				<img src="image/logo.png">
+			</a>
+			</h1>
+		</div>
+		<div id="kakao_content">
+			<div id="login_content">
+				<div id="login_area">
+		<div id="container">
+			<form method="post" id="login_form">
+				<input class="idpw" type="text" id="login_id" placeholder="아이디를 입력 해 주세요"></input>
+				<!-- <img src="image/kakao_help.PNG"> -->
+				<input class="idpw" type="password" id="login_pw" placeholder="비밀번호(4~16자리)"></input>
+			</form>		
+				<a href="#" id="btn_login"> 로그인</a>
+		</div>
+		<div id="login_help">
+			<div id="remember"> 
+				<input type="checkbox" name="remember" id="remember2">
+				<label for="remember2">자동 로그인</label>
+			</div>
+			
+			<div class="right">
+				<a href="#">계정 찾기</a>
+				<span class="right_bar"></span>
+				<a href="#">비밀번호 찾기</a>
+			</div>
+			<a id="member" href="member_join.html">회원가입</a>
+		</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
